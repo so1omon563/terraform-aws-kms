@@ -3,9 +3,9 @@
 include_controls 'inspec-aws'
 require './test/library/common'
 
-tfstate = get_state
-key_id = tfstate['outputs']['kms']['value']['kms']['kms_key']['kms']['arn'].to_s
-role_name = tfstate['outputs']['kms']['value']['iam_service_linked_role']['name'].to_s
+tfstate = StateFileReader.new
+key_id = tfstate.read['outputs']['kms']['value']['kms']['kms_key']['kms']['arn'].to_s
+role_name = tfstate.read['outputs']['kms']['value']['iam_service_linked_role']['name'].to_s
 
 control 'default' do
   describe aws_kms_key(key_id: key_id) do
