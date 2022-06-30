@@ -4,7 +4,7 @@ source .image
 docker images | grep $IMAGE &> /dev/null
 IMAGE_EXISTS=$?
 
-if [[IMAGE_EXISTS -ne 0]]; then
+if [[ $IMAGE_EXISTS -ne 0 ]]; then
   docker pull $IMAGE
 fi
 
@@ -14,7 +14,7 @@ cd ${repo_root}
 docker ps -a | grep $IMAGE &> /dev/null
 CONTAINER_EXISTS=$?
 
-if [[ CONTAINER_EXISTS -ne 0 ]]; then
+if [[ $CONTAINER_EXISTS -ne 0 ]]; then
     docker run --rm \
         -v ${repo_root}:${repo_root} \
         -v $HOME/.ssh:/root/.ssh:ro \
