@@ -8,7 +8,8 @@ provider "aws" {
 }
 
 module "kms" {
-  source = "../../" # Change
+  source  = "so1omon563/kms/aws"
+  version = "1.1.0" # Replace with appropriate version
 
   name = "example-kms"
   tags = {

@@ -19,7 +19,8 @@ provider "aws" {
 }
 
 module "kms" {
-  source = "../../" # Change
+  source  = "so1omon563/kms/aws"
+  version = "1.1.0" # Replace with appropriate version
 
   name = "example-kms"
   tags = {
@@ -44,7 +45,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kms"></a> [kms](#module\_kms) | ../../ | n/a |
+| <a name="module_kms"></a> [kms](#module\_kms) | so1omon563/kms/aws | 1.1.0 |
 
 ## Resources
 
