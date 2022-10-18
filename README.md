@@ -4,12 +4,14 @@ Creates a KMS key that can be used across modules. Also creates a Service Linked
 
 The module is also able to provide grants to a list of additional KMS keys to attach to the Service Linked Role, or create the role with only a provided list - rather than create a key.
 
-## Put info about snapshot / ami kms lookup module here once complete
-
-Examples for use can be found under the [examples](https://github.com/so1omon563/terraform-aws-kms/tree/main/examples) directory.
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -22,7 +24,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.20.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -57,4 +59,6 @@ No modules.
 | <a name="output_iam_service_linked_role"></a> [iam\_service\_linked\_role](#output\_iam\_service\_linked\_role) | n/a |
 | <a name="output_kms"></a> [kms](#output\_kms) | n/a |
 | <a name="output_kms_grants"></a> [kms\_grants](#output\_kms\_grants) | n/a |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
