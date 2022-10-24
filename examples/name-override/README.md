@@ -1,6 +1,6 @@
-# Basic usage
+# Using name override
 
-Basic usage example.
+Example demonstrates using the `name_override` variable to specify the exact name to use for the key.
 
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -22,7 +22,8 @@ module "kms" {
   source  = "so1omon563/kms/aws"
   version = "1.2.0" # Replace with appropriate version
 
-  name = "example-kms"
+  name          = "example-kms"
+  name_override = "example-kms-override"
   tags = {
     example = "true"
   }
