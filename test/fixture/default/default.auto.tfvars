@@ -1,4 +1,4 @@
-name = "kitchen-kms-test"
+name = "kitchen-kms"
 
 tags = {
   environment = "dev"
