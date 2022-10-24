@@ -24,7 +24,8 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.36.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
@@ -39,6 +40,7 @@ No modules.
 | [aws_kms_grant.autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_grant) | resource |
 | [aws_kms_grant.autoscaling-additional](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_grant) | resource |
 | [aws_kms_key.kms](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
+| [random_id.random](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.kms-key-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
@@ -49,6 +51,8 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_key_arns"></a> [additional\_key\_arns](#input\_additional\_key\_arns) | A list of additional KMS keys to grant the Service Linked Role access to. Only accepts full KMS key ARNs. | `list(string)` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Short, descriptive name of the environment. All resources will be named using this value as a prefix. | `string` | n/a | yes |
+| <a name="input_name_override"></a> [name\_override](#input\_name\_override) | Used if there is a need to specify a KMS name outside of the standardized nomenclature. For example, if importing a key that doesn't follow the standard naming formats. | `string` | `null` | no |
+| <a name="input_name_random"></a> [name\_random](#input\_name\_random) | If multiple keys using the same name need to be created in an environment, setting this as `true` will add a random hex to the `name` of the key. If using `name_override`, this value is ignored. | `bool` | `false` | no |
 | <a name="input_service_linked_role_only"></a> [service\_linked\_role\_only](#input\_service\_linked\_role\_only) | If set to **true**, this will ONLY create the Service Linked Role with grants for the list of ARNs in **var.additional\_key\_arns**. Can be used if you have KMS keys managed outside of this module. | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tag names and values for tags to apply to all taggable resources created by the module. Default value is a blank map to allow for using Default Tags in the provider. | `map(string)` | `{}` | no |
 
