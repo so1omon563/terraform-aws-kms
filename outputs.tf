@@ -11,6 +11,6 @@ output "kms" {
 
 output "kms_grants" {
   value = {
-    additional_keys = { for key, value in aws_kms_grant.autoscaling-additional : key => value }
+    additional_keys = { for key, value in aws_kms_grant.autoscaling-created-additional : key => value }
   }
 }

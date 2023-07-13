@@ -19,10 +19,10 @@ provider "aws" {
 }
 
 module "kms" {
-  source  = "so1omon563/kms/aws"
-  version = "1.2.0" # Replace with appropriate version
-
-  name = "example-kms"
+  # source  = "so1omon563/kms/aws"
+  # version = "1.2.0" # Replace with appropriate version
+  source = "../../"
+  name   = "example-kms"
   tags = {
     example = "true"
   }
@@ -45,7 +45,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kms"></a> [kms](#module\_kms) | so1omon563/kms/aws | 1.2.0 |
+| <a name="module_kms"></a> [kms](#module\_kms) | ../../ | n/a |
 
 ## Resources
 
