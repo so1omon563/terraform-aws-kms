@@ -98,6 +98,8 @@ data "aws_iam_policy_document" "autoscaling-default-policy" {
 }
 
 data "aws_iam_policy_document" "autoscaling-created-policy" {
+  count = var.autoscaling.create_custom_service_linked_role ? 1 : 0
+
   #checkov:skip=CKV_AWS_109:In this shared module, this is by design. These policies are for autoscaling, so the resources are not locked down.
   #checkov:skip=CKV_AWS_111:In this shared module, this is by design. These policies are for autoscaling, so the resources are not locked down.
   statement {
@@ -123,7 +125,7 @@ data "aws_iam_policy_document" "autoscaling-created-policy" {
     principals {
       type = "AWS"
       identifiers = [
-        aws_iam_service_linked_role.autoscaling.arn
+        aws_iam_service_linked_role.autoscaling[0].arn
       ]
     }
     principals {
@@ -151,7 +153,7 @@ data "aws_iam_policy_document" "autoscaling-created-policy" {
     principals {
       type = "AWS"
       identifiers = [
-        aws_iam_service_linked_role.autoscaling.arn
+        aws_iam_service_linked_role.autoscaling[0].arn
       ]
     }
 

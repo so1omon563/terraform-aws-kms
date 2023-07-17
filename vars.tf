@@ -1,44 +1,9 @@
-variable "name" {
-  type        = string
-  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix."
-}
-
-variable "name_override" {
-  type        = string
-  description = "Used if there is a need to specify a KMS name outside of the standardized nomenclature. For example, if importing a key that doesn't follow the standard naming formats."
-  default     = null
-}
-
-variable "name_random" {
-  type        = bool
-  description = "If multiple keys using the same name need to be created in an environment, setting this as `true` will add a random hex to the `name` of the key. If using `name_override`, this value is ignored."
-  default     = false
-}
-
-variable "tags" {
-  type        = map(string)
-  description = "A map of tag names and values for tags to apply to all taggable resources created by the module. Default value is a blank map to allow for using Default Tags in the provider."
-  default     = {}
-}
-
-variable "additional_key_arns" {
-  type        = list(string)
-  description = "A list of additional KMS keys to grant the Service Linked Role access to. For use with **var.service_linked_role_only**. Only accepts full KMS key ARNs."
-  default     = null
-}
-
-variable "service_linked_role_only" {
-  type        = bool
-  description = "If set to **true**, this will ONLY create a custom Service Linked Role with grants for the list of ARNs in **var.additional_key_arns**. Can be used if you have KMS keys managed outside of this module."
-  default     = false
-}
-
 variable "autoscaling" {
   type        = map(bool)
-  description = "Variable to determine if grants / policies for AutoScaling are needed."
+  description = "Variable to determine if grants / policies for AutoScaling are needed. Note that if `autoscaling_needed` is set to `true`, it will override the **var.policy** variable. If you want to use a custom policy, ensure that `autoscaling_needed` is set to `false` and use the **var.policy** variable. If creating a custom service linked role, you must also set `use_default_service_linked_role` to `false`."
   default = {
-    "autoscaling_needed"                = true
-    "use_default_service_linked_role"   = true,
+    "autoscaling_needed"                = false
+    "use_default_service_linked_role"   = false,
     "create_custom_service_linked_role" = false,
   }
 }
@@ -120,8 +85,31 @@ variable "multi_region" {
   default     = false
 }
 
+variable "name" {
+  type        = string
+  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix."
+}
+
+variable "name_override" {
+  type        = string
+  description = "Used if there is a need to specify a KMS name outside of the standardized nomenclature. For example, if importing a key that doesn't follow the standard naming formats."
+  default     = null
+}
+
+variable "name_random" {
+  type        = bool
+  description = "If multiple keys using the same name need to be created in an environment, setting this as `true` will add a random hex to the `name` of the key. If using `name_override`, this value is ignored."
+  default     = false
+}
+
 variable "policy" {
   type        = string
   description = "A valid KMS key policy JSON document. If none is specified, and the AWS default policy, providing all principals in the owning account full access to al KMS operations, will be used. Although this is a key policy, not an IAM policy, an `aws_iam_policy_document`, in the form that designates a principal, can be used. For more information about building policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://developer.hashicorp.com/terraform/tutorials/aws/aws-iam-policy)."
   default     = null
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "A map of tag names and values for tags to apply to all taggable resources created by the module. Default value is a blank map to allow for using Default Tags in the provider."
+  default     = {}
 }
