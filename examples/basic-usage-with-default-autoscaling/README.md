@@ -19,10 +19,11 @@ provider "aws" {
 }
 
 module "kms" {
-  # source  = "so1omon563/kms/aws"
-  # version = "2.0.0" # Replace with appropriate version
-  source = "../../"
-  name   = "example-kms"
+  source  = "so1omon563/kms/aws"
+  version = "2.0.0" # Replace with appropriate version
+  # source = "../../"
+
+  name = "example-kms"
   autoscaling = {
     autoscaling_needed                = true
     use_default_service_linked_role   = false
@@ -51,7 +52,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kms"></a> [kms](#module\_kms) | ../../ | n/a |
+| <a name="module_kms"></a> [kms](#module\_kms) | so1omon563/kms/aws | 2.0.0 |
 
 ## Resources
 
