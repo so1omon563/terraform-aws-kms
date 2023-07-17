@@ -19,9 +19,9 @@ provider "aws" {
 }
 
 module "kms" {
-  # source  = "so1omon563/kms/aws"
-  # version = "2.0.0" # Replace with appropriate version
-  source = "../../"
+  source  = "so1omon563/kms/aws"
+  version = "2.0.0" # Replace with appropriate version
+  # source = "../../"
 
   name          = "example-kms"
   name_override = "example-kms-override"
@@ -47,7 +47,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kms"></a> [kms](#module\_kms) | ../../ | n/a |
+| <a name="module_kms"></a> [kms](#module\_kms) | so1omon563/kms/aws | 2.0.0 |
 
 ## Resources
 
