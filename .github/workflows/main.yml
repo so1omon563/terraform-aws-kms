@@ -1,10 +1,15 @@
+permissions: read-all
+
 name: Bump version
+
 on:
   pull_request_target:
     types:
       - closed
 jobs:
   if_merged:
+    permissions:
+      contents: write
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:

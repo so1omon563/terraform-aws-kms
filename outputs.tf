@@ -8,9 +8,3 @@ output "kms" {
     kms_key_alias : { for key, value in aws_kms_alias.kms : key => value }
   }
 }
-
-output "kms_grants" {
-  value = {
-    additional_keys = { for key, value in aws_kms_grant.autoscaling-additional : key => value }
-  }
-}
